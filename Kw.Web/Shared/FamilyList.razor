@@ -1,0 +1,31 @@
+﻿@using Kw.Web.Services
+<h3>Family List</h3>
+
+@if (Users == null)
+{
+    <p><em>Loading...</em></p>
+} 
+
+else {
+    <div class="container">
+        @foreach (var user in Users)
+        {
+            <div class="item">
+                <div>@user.Id &ndash; @user.Name</div>
+                <div><a href="@($"family/edit/{user.Id}")">Edit</a></div>
+            </div>
+        }
+    </div>
+}
+
+@code {
+    public IEnumerable<User> Users { get; set; }
+
+    [Inject]
+    public IUserDataService UserDataService { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Users = (await UserDataService.GetUsers()).ToList();
+    }
+}
