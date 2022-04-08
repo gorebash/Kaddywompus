@@ -9,6 +9,14 @@
     {
       "route": "/api/*",
       "allowedRoles": [ "authenticated" ]
+    },
+    {
+      "route": "/login",
+      "rewrite": "/.auth/login/google"
+    },
+    {
+      "route": "/logout",
+      "rewrite": "/.auth/logout"
     }
   ],
   "auth": {
