@@ -28,10 +28,10 @@ namespace Kw.Web.Services
         }
 
         public async Task<User> GetUserById(int id) => await JsonSerializer.DeserializeAsync<User>(
-                await _httpClient.GetStreamAsync($"api/values/{id}"), new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                await _httpClient.GetStreamAsync($"api/FamilyMembers/{id}"), new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
         public async Task<IEnumerable<User>> GetUsers() => await JsonSerializer.DeserializeAsync<IEnumerable<User>>(
-                await _httpClient.GetStreamAsync($"api/values"), new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                await _httpClient.GetStreamAsync($"api/FamilyMembers"), new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
         public Task UpdateUser(User user)
         {
