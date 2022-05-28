@@ -1,4 +1,4 @@
-using Kw.CoreApi.Services;
+using Kw.Api.Services;
 using Kw.Data;
 using Microsoft.EntityFrameworkCore;
 

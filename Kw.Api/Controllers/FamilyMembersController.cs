@@ -1,9 +1,9 @@
-﻿using Kw.CoreApi.Services;
+﻿using Kw.Api.Services;
 using Kw.Data;
 using Kw.Model;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Kw.CoreApi.Controllers
+namespace Kw.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]

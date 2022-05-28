@@ -1,7 +1,7 @@
 ﻿using Kw.Data;
 using Kw.Model;
 
-namespace Kw.CoreApi.Services
+namespace Kw.Api.Services
 {
     public interface IUserService
     {
