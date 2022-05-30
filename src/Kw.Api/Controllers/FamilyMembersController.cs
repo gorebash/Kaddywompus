@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Kw.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class FamilyMembersController : ControllerBase
     {
         private readonly IUserService _userService;
@@ -18,7 +18,8 @@ namespace Kw.Api.Controllers
 
         public IEnumerable<User> Index()
         {
-            return _userService.GetUsers();
+            //return _userService.GetUsers();
+            return Users();
         }
 
 
@@ -27,7 +28,7 @@ namespace Kw.Api.Controllers
             var user = new User
             {
                 Id = 1,
-                Name = "Gorilla"
+                FirstName = "Bat 2"
             };
 
             return new List<User> {
@@ -35,27 +36,27 @@ namespace Kw.Api.Controllers
                 new User
                 {
                     Id = 2,
-                    Name = "Panther",
+                    FirstName = "Panther",
                 },
                 new User
                 {
                     Id = 3,
-                    Name = "Monkey",
+                    FirstName = "Monkey",
                 },
                 new User
                 {
                     Id = 4,
-                    Name = "Fox",
+                    FirstName = "Fox",
                 },
                 new User
                 {
                     Id = 5,
-                    Name = "Zebra",
+                    FirstName = "Zebra",
                 },
                 new User
                 {
                     Id = 6,
-                    Name = "Moose",
+                    FirstName = "Moose",
                 },
             };
         }

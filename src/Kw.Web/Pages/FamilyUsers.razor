@@ -16,7 +16,7 @@ else {
         @foreach (var user in Users)
         {
             <div class="item">
-                <div>@user.Id &ndash; @user.Name</div>
+                <div>@user.Id &ndash; @user.FirstName</div>
                 <div><a href="@($"family/edit/{user.Id}")">Edit</a></div>
             </div>
         }
