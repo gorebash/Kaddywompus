@@ -10,55 +10,36 @@ namespace Kw.Api.Controllers
     public class FamilyMembersController : ControllerBase
     {
         private readonly IUserService _userService;
+        private readonly ILogger _logger;
 
-        public FamilyMembersController(IUserService userService)
+
+        public FamilyMembersController(IUserService userService, ILogger<User> logger)
         {
             _userService = userService;
-        }
-
-        public IEnumerable<User> Index()
-        {
-            //return _userService.GetUsers();
-            return Users();
+            _logger = logger;
         }
 
 
-        private static List<User> Users()
+        [HttpGet]
+        public IEnumerable<User> Get()
         {
-            var user = new User
+            return _userService.GetUsers();
+        }
+
+
+        [HttpPost]
+        public async Task<ActionResult> Post (User user)
+        {
+            try
             {
-                Id = 1,
-                FirstName = "Bat 2"
-            };
+                var saved = await _userService.SaveUser(user);
+                return Ok(saved);
+            } catch (Exception ex)
+            {
+                _logger.LogError(ex, "Unable to save user.");
+            }
 
-            return new List<User> {
-                user,
-                new User
-                {
-                    Id = 2,
-                    FirstName = "Panther",
-                },
-                new User
-                {
-                    Id = 3,
-                    FirstName = "Monkey",
-                },
-                new User
-                {
-                    Id = 4,
-                    FirstName = "Fox",
-                },
-                new User
-                {
-                    Id = 5,
-                    FirstName = "Zebra",
-                },
-                new User
-                {
-                    Id = 6,
-                    FirstName = "Moose",
-                },
-            };
+            return BadRequest();
         }
     }
 }

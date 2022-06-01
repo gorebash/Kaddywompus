@@ -4,6 +4,10 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
+//builder.Logging.AddJsonConsole();
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -19,6 +23,7 @@ builder.Services.AddCors(options =>
     options.AddDefaultPolicy(
         policy =>
         {
+            policy.AllowAnyHeader();
             policy.WithOrigins("*");
         });
 });

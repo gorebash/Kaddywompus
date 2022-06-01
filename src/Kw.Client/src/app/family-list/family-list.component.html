@@ -1,0 +1,11 @@
+<p>family-list works!</p>
+
+<ul *ngIf="family | async as f">
+    <li *ngFor="let member of f">{{ member.firstName }}</li>
+</ul>
+
+
+<form [formGroup]="newMemberForm" (ngSubmit)="addMember()">
+    <label>First Name: </label><input id="firstName" type="text" formControlName="firstName" />
+    <button type="submit" [disabled]="!newMemberForm.valid">Save</button>
+</form>
